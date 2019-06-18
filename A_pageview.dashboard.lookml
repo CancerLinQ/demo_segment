@@ -11,7 +11,7 @@
     default_value: 2019
 
   - name: org_id
-    title: "Organization"
+    title: "org_id"
     type: string_filter
 
   elements:
@@ -24,7 +24,7 @@
     measures: [pages.count_pageviews, pages.count_distinct_pageviews, pages.avg_page_view_duration_minutes,
       pages.count_visitors]
     hidden_fields: [pages.count_distinct_pageviews, pages.avg_page_view_duration_minutes,
-      pages.count_visitors]
+      pages.count_visitors, users.org_id]
     listen:
       date: pages.received_date
     sorts: [pages.count_pageviews desc]
@@ -45,7 +45,7 @@
     measures: [pages.count_pageviews, pages.count_distinct_pageviews, pages.avg_page_view_duration_minutes,
       pages.count_visitors]
     hidden_fields: [pages.count_pageviews, pages.avg_page_view_duration_minutes,
-      pages.count_visitors]
+      pages.count_visitors, users.org_id]
     listen:
       date: pages.received_date
     sorts: [pages.count_distinct_pageviews desc]
@@ -65,7 +65,9 @@
     explore: event_facts
     measures: [pages.count_pageviews, pages.count_distinct_pageviews, pages.avg_page_view_duration_minutes,
       pages.count_visitors]
-    hidden_fields: [pages.count_pageviews, pages.count_distinct_pageviews, pages.avg_page_view_duration_minutes]
+    hidden_fields: [pages.count_pageviews, pages.count_distinct_pageviews, pages.avg_page_view_duration_minutes, users.org_id]
+    filters:
+      users.org_id: ''
     listen:
       date: pages.received_date
     sorts: [pages.count_visitors desc]
@@ -85,7 +87,7 @@
     explore: event_facts
     measures: [pages.count_pageviews, pages.count_distinct_pageviews, pages.avg_page_view_duration_minutes,
       pages.count_visitors]
-    hidden_fields: [pages.count_pageviews, pages.count_distinct_pageviews, pages.count_visitors]
+    hidden_fields: [pages.count_pageviews, pages.count_distinct_pageviews, pages.count_visitors, users.org_id]
     listen:
       date: pages.received_date
     sorts: [pages.avg_page_view_duration_minutes desc]
@@ -137,8 +139,10 @@
     explore: event_facts
     dimensions: [pages.name]
     measures: [pages.count_pageviews]
+    hidden_fields: [users.org_id]
     filters:
       page_facts.is_last_page: 'Yes'
+      users.org_id: ''
     listen:
       date: pages.received_date
     sorts: [pages.count_pageviews desc]
@@ -157,6 +161,7 @@
       pages.count_pageviews, pages.count_visitors]
     filters:
       pages.avg_page_view_duration_minutes: NOT NULL
+      users.org_id: ''
     listen:
       date: pages.received_date
     sorts: [pages.avg_page_view_duration_minutes desc]

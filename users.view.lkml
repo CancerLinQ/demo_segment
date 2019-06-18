@@ -67,7 +67,7 @@ view: users {
 
   dimension: org_id {
     type: string
-    # hidden: true
+    can_filter: yes
     sql: ${TABLE}.org_id ;;
   }
 

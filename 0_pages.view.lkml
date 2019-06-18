@@ -72,7 +72,7 @@ view: pages {
 
   measure: count {
     type: count
-    drill_fields: [id, context_campaign_name, name, users.id]
+    drill_fields: [id, context_campaign_name, name, users.id, users.org_id]
   }
 
   measure: count_visitors {
