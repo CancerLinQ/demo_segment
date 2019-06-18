@@ -20,6 +20,7 @@ explore: track_facts {
        ;;
   }
 
+
   join: sessions_trk {
     view_label: "Sessions"
     type: left_outer
