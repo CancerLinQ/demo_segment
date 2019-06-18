@@ -65,10 +65,10 @@ view: users {
     sql: ${TABLE}.only_private_comments ;;
   }
 
-  dimension: organization_id {
-    type: number
+  dimension: org_id {
+    type: string
     # hidden: true
-    sql: ${TABLE}.organization_id ;;
+    sql: ${TABLE}.org_id ;;
   }
 
   dimension_group: received {

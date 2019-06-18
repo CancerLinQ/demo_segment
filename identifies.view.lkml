@@ -23,6 +23,11 @@ view: identifies {
     sql: ${TABLE}.user_id ;;
   }
 
+  dimension: org_id {
+    type:  string
+    sql:  ${TABLE}.org_id ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [users.id]

@@ -10,6 +10,10 @@
     type: date_filter
     default_value: 2019
 
+  - name: org_id
+    title: "Organization"
+    type: string_filter
+
   elements:
 
   - name: page_views
