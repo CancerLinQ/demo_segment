@@ -67,6 +67,13 @@ explore: sessions_trk {
     sql_on: ${sessions_trk.looker_visitor_id} = ${user_session_facts.looker_visitor_id} ;;
     relationship: many_to_one
   }
+
+  join: users {
+    view_label: "Users"
+    type: left_outer
+    sql_on: ${user_session_facts.looker_visitor_id} = ${users.id} ;;
+    relationship: one_to_one
+  }
 }
 
 explore: funnel_explorer {
